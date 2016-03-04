@@ -9,7 +9,7 @@ public class Band {
 
   public String getName() {
     return name;
-
+  }
   public int getId() {
     return id;
   }
@@ -17,13 +17,13 @@ public class Band {
   public Band (String name) {
     this.name = name;
   }
-  //
-  // public static  List<Recipe> all() {
-  //   String sql = "SELECT * FROM recipes ORDER BY rating DESC";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     return con.createQuery(sql).executeAndFetch(Recipe.class);
-  //   }
-  // }
+
+  public static  List<Band> all() {
+    String sql = "SELECT * FROM bands ORDER BY name ASC";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Band.class);
+    }
+  }
   //
   // @Override
   // public boolean equals(Object otherRecipe) {

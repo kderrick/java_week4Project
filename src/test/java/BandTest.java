@@ -9,7 +9,7 @@ public class BandTest {
 
   @Test
   public void all_emptyAtFirst() {
-    assertEquals(Recipe.all().size(), 0);
+    assertEquals(Band.all().size(), 0);
   }
   //
   // @Test
