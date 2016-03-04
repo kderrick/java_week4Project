@@ -3,62 +3,20 @@ import java.util.ArrayList;
 import org.sql2o.*;
 
 public class Band {
-  // private int id;
-  // private String instructions;
-  // private String ingredients;
-  // private int rating;
-  // private String title;
-  //
-  //
-  // public String getInstructions() {
-  //   return instructions;
-  // }
-  //
-  // public String getIngredients() {
-  //   return ingredients;
-  // }
-  //
-  // public int getId() {
-  //   return id;
-  // }
-  //
-  // public int getRating() {
-  //   return rating;
-  // }
-  //
-  // public String getTitle() {
-  //   return title;
-  // }
-  //
-  // public Recipe (String title, String ingredients, String instructions, int rating) {
-  //   this.title = title;
-  //   this.ingredients = ingredients;
-  //   this.instructions = instructions;
-  //   this.rating = rating;
-  // }
-  //
-  // public Recipe (String title, String ingredients, String instructions) {
-  //   this.title = title;
-  //   this.ingredients = ingredients;
-  //   this.instructions = instructions;
-  //   this.rating = -1;
-  // }
-  //
-  // public Recipe (String title, String ingredients) {
-  //   this.title = title;
-  //   this.ingredients = ingredients;
-  //   this.instructions = "";
-  //   this.rating = -1;
-  //
-  // }
-  //
-  // public Recipe (String title) {
-  //   this.title = title;
-  //   this.ingredients = "";
-  //   this.instructions = "";
-  //   this.rating = -1;
-  //
-  // }
+  private int id;
+  private String name;
+
+
+  public String getName() {
+    return name;
+
+  public int getId() {
+    return id;
+  }
+
+  public Band (String name) {
+    this.name = name;
+  }
   //
   // public static  List<Recipe> all() {
   //   String sql = "SELECT * FROM recipes ORDER BY rating DESC";
