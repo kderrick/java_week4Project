@@ -24,16 +24,16 @@ public class Band {
       return con.createQuery(sql).executeAndFetch(Band.class);
     }
   }
-  //
-  // @Override
-  // public boolean equals(Object otherRecipe) {
-  //   if (!(otherRecipe instanceof Recipe)) {
-  //     return false;
-  //   } else {
-  //     Recipe newRecipe = (Recipe) otherRecipe;
-  //     return this.getTitle().equals(newRecipe.getTitle());
-  //   }
-  // }
+
+  @Override
+  public boolean equals(Object otherBand) {
+    if (!(otherBand instanceof Band)) {
+      return false;
+    } else {
+      Band newBand = (Band) otherBand;
+      return this.getName().equals(newBand.getName());
+    }
+  }
   //
   // public void save() {
   //   String sql = "INSERT INTO recipes (title, ingredients, instructions, rating) VALUES (:title, :ingredients, :instructions, :rating)";

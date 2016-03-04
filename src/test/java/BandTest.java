@@ -11,13 +11,13 @@ public class BandTest {
   public void all_emptyAtFirst() {
     assertEquals(Band.all().size(), 0);
   }
-  //
-  // @Test
-  // public void equals_returnsTrueIfNamesAreTheSame() {
-  //   Recipe firstRecipe = new Recipe("BLT");
-  //   Recipe secondRecipe = new Recipe("BLT", "bacon, lettice, tomato");
-  //   assertTrue(firstRecipe.equals(secondRecipe));
-  // }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame() {
+    Band firstBand = new Band("Sigur Ros");
+    Band secondBand = new Band("Sigur Ros");
+    assertTrue(firstBand.equals(secondBand));
+  }
   //
   // @Test
   // public void save_addsInstanceOfRecipeToDatabase() {
