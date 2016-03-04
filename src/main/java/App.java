@@ -47,15 +47,15 @@ public class App {
     //     return null;
     // });
     //
-    // get("/recipes/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int id = Integer.parseInt(request.params("id"));
-    //   Recipe recipe = Recipe.find(id);
-    //   model.put("recipe", recipe);
-    //   model.put("allTags", Tag.all());
-    //   model.put("template", "templates/recipe.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    get("/bands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Band band = Band.find(id);
+      model.put("band", band);
+      model.put("allVenues", Venue.all());
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
     //
     // post("/tags/deleteAll", (request, response) -> {
     //     HashMap<String, Object> model = new HashMap<String, Object>();
@@ -92,16 +92,16 @@ public class App {
     //   return null;
     // });
     //
-    // post("/recipes/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int recipeId = Integer.parseInt(request.queryParams("recipe_id"));
-    //   int tagId = Integer.parseInt(request.queryParams("tagTitle"));
-    //   Tag tag = Tag.find(tagId);
-    //   Recipe recipe = Recipe.find(recipeId);
-    //   recipe.addTag(tag);
-    //   response.redirect("/recipes/" + recipeId);
-    //   return null;
-    // });
+    post("/bands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int bandId = Integer.parseInt(request.queryParams("band_id"));
+      int venueId = Integer.parseInt(request.queryParams("venueName"));
+      Venue venue = Venue.find(venueId);
+      Band band = Band.find(bandId);
+      band.addVenue(venue);
+      response.redirect("/bands/" + bandId);
+      return null;
+    });
     //
     // post("/tags/:id", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();

@@ -1,44 +1,38 @@
-recipe.vtl
+band.vtl
 
-<h2>$recipe.getTitle()</h2>
-<h4>$recipe.getIngredients()</h4>
-<h4>$recipe.getInstructions()</h4>
-<h4>$recipe.getRating()</h4>
-#if ($recipe.getTags())
-  <p>Here are the tags you have applied to this recipe:</p>
-  #foreach ($tag in $recipe.getTags())
-    <li><a href="/tags/$tag.getId()">$tag.getTitle()</a></li>
+<h2>$band.getName()</h2>
+#if ($band.getVenues())
+  <p>Here are the venues this band has played at:</p>
+  #foreach ($venue in $band.getVenues())
+    <li><a href="/venues/$venue.getId()">$venue.getName()</a></li>
   #end
 #end
 
-<form action="/recipes/$recipe.getId()" method="post">
+<form action="/bands/$band.getId()" method="post">
 
-  <input id="recipe_id" name="recipe_id" type="hidden" value="$recipe.getId()">
+  <input id="band_id" name="band_id" type="hidden" value="$band.getId()">
 
 
-  <label for="tagTitle">Assign Tag</label>
-  <select id="tagTitle" name="tagTitle" type="text">
-    #foreach($tag in $allTags)
-    <option value="$tag.getId()">$tag.getTitle()</option>
+  <label for="venueName">Assign Venue</label>
+  <select id="venueName" name="venueName" type="text">
+    #foreach($venue in $allVenues)
+    <option value="$venue.getId()">$venue.getName()</option>
     #end
   </select>
-  <button id="assignTagBtn" type="submit">Assign Tag</button>
+  <button id="assignVenueBtn" type="submit">Assign Venue</button>
 </form>
 
 <hr>
 
-<form action="/recipes/$recipe.getId()/update" method="post">
-  <label for="updateRecipeTitle">Recipe Name</label>
-  <input id="updateRecipeTitle" name="updateRecipeTitle" type="text" required autofocus="autofocus" value="$recipe.getTitle()">
+<form action="/bands/$band.getId()/update" method="post">
+  <label for="updateBandName">Band Name</label>
+  <input id="updateBandName" name="updateBandName" type="text" required autofocus="autofocus" value="$band.getName()">
 
-  <label for="updateRecipeIngredients">Recipe Ingredients</label>
-  <input id="updateRecipeIngredients" name="updateRecipeIngredients" value="$recipe.getIngredients()" type="text" required>
-
-  <button type="submit" id="updateRecipe">Update Recipe</button>
+  <button type="submit" id="updateBand">Update Band</button>
 </form>
 
 <hr>
 
-  <a href="/recipes">Return to Recipe List</a>
+  <a href="/bands">Return to Band List</a>
   <p></p>
-  <a href="/tags">Return to Tag List</a>
+  <a href="/venues">Return to Venue List</a>

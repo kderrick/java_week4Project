@@ -46,18 +46,18 @@ public class AppTest extends FluentTest {
     submit("#addVenueBtn");
     assertThat(pageSource()).contains("Wonder Ballroom");
   }
-  //
-  // @Test
-  // public void addTagToRecipe() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   Recipe newRecipe = new Recipe("Tacos");
-  //   newRecipe.save();
-  //   String recipePath = String.format("http://localhost:4567/recipes/%d", newRecipe.getId());
-  //   goTo(recipePath);
-  //   assertThat(pageSource()).contains("Mexican");
-  //   assertThat(pageSource()).contains("Tacos");
-  // }
+
+  @Test
+  public void addVenueToBand() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    Band newBand = new Band("The National");
+    newBand.save();
+    String bandPath = String.format("http://localhost:4567/bands/%d", newBand.getId());
+    goTo(bandPath);
+    assertThat(pageSource()).contains("The National");
+    assertThat(pageSource()).contains("Wonder");
+  }
   //
   // @Test
   // public void addRecipeToTag() {
