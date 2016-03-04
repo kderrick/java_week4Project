@@ -59,7 +59,7 @@ public class App {
     //
     // post("/tags/deleteAll", (request, response) -> {
     //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     Tag.deleteAll();
+    //     Venue.deleteAll();
     //     response.redirect("/tags");
     //     return null;
     // });
@@ -123,19 +123,13 @@ public class App {
       return null;
     });
     //
-    // post("/tags/:id/delete", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int tagId = Integer.parseInt(request.queryParams("tagId"));
-    //   Tag tag = Tag.find(tagId);
-    //   tag.delete();
-    //   response.redirect("/tags");
-    //   return null;
-    // });
-
-
-
+    post("/venues/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int venueId = Integer.parseInt(request.queryParams("venueId"));
+      Venue venue = Venue.find(venueId);
+      venue.delete();
+      response.redirect("/venues");
+      return null;
+    });
   }
-
-  //public static 'Returntype' 'FuncName' (Paramtype param) {}  //first business logic function
-
 }

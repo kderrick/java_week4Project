@@ -82,35 +82,36 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/bands");
     submit(bandId);
     assertThat(pageSource()).doesNotContain(newBand.getName());
+    assertThat(pageSource()).doesNotContain("404");
+  }
+
+  @Test
+  public void deleteVenue() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    String venueId = "#" + newVenue.getId();
+    goTo("http://localhost:4567/venues");
+    submit(venueId);
+    assertThat(pageSource()).doesNotContain(newVenue.getName());
+    assertThat(pageSource()).doesNotContain("404");
+  }
+
+  @Test
+  public void assignVenueToBand() {
+    Venue newVenue = new Venue("Roseland");
+    newVenue.save();
+    Band newBand = new Band("The National");
+    newBand.save();
+    // newBand.addVenue(newVenue);
+    goTo("http://localhost:4567/bands/" + newBand.getId());
+    fillSelect("#venueName").withIndex(0);
+    submit("#assignVenueBtn");
+    assertThat(pageSource()).contains("<a href=\"/venues/" + newVenue.getId() + "\">");
+
   }
   //
   // @Test
-  // public void deleteTag() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   String tagId = "#" + newTag.getId();
-  //   goTo("http://localhost:4567/tags");
-  //   submit(tagId);
-  //   assertThat(pageSource()).doesNotContain(newTag.getTitle());
-  //   assertThat(pageSource()).doesNotContain("404");
-  // }
-  //
-  // @Test
-  // public void assignTagToRecipe() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   Recipe newRecipe = new Recipe("Tacos");
-  //   newRecipe.save();
-  //   // newRecipe.addTag(newTag);
-  //   goTo("http://localhost:4567/bands/" + newRecipe.getId());
-  //   fillSelect("#tagTitle").withIndex(0);
-  //   submit("#assignTagBtn");
-  //   assertThat(pageSource()).contains("<a href=\"/tags/" + newTag.getId() + "\">");
-  //
-  // }
-  //
-  // @Test
-  // public void assignRecipeToTag() {
+  // public void assignBandToTag() {
   //   Tag newTag = new Tag("Mexican");
   //   newTag.save();
   //   Recipe newRecipe = new Recipe("Tacos");
