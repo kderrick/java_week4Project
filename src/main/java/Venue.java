@@ -65,35 +65,21 @@ public class Venue {
       .executeUpdate();
     }
   }
-  //
-  // public void delete() {
-  //   String sqlJoin ="DELETE FROM recipes_tags WHERE tag_id = :id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sqlJoin)
-  //       .addParameter("id", id)
-  //       .executeUpdate();
-  //   }
-  //   String sql ="DELETE FROM tags WHERE id = :id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sql)
-  //       .addParameter("id", id)
-  //       .executeUpdate();
-  //   }
-  // }
-  //
-  // public static void deleteAll() {
-  //   String sqlJoin ="DELETE FROM recipes_tags";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sqlJoin)
-  //       .executeUpdate();
-  //   }
-  //   String sql ="DELETE FROM tags ";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sql)
-  //       .executeUpdate();
-  //   }
-  // }
-  //
+
+  public void delete() {
+    String sqlJoin ="DELETE FROM bands_venues WHERE venue_id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sqlJoin)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+    String sql ="DELETE FROM venues WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
   // public void addRecipe (Recipe recipe) {
   //   try(Connection con = DB.sql2o.open()) {
   //     String sql = "INSERT INTO recipes_tags (recipe_id, tag_id) VALUES (:recipe_id, :tag_id)";
@@ -117,4 +103,18 @@ public class Venue {
   //     return recipes;
   //   }
   // }
+  //
+  // public static void deleteAll() {
+  //   String sqlJoin ="DELETE FROM recipes_tags";
+  //   try(Connection con = DB.sql2o.open()) {
+  //     con.createQuery(sqlJoin)
+  //       .executeUpdate();
+  //   }
+  //   String sql ="DELETE FROM tags ";
+  //   try(Connection con = DB.sql2o.open()) {
+  //     con.createQuery(sql)
+  //       .executeUpdate();
+  //   }
+  // }
+  //
 }

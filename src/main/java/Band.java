@@ -78,7 +78,30 @@ public class Band {
         .executeUpdate();
     }
   }
-  //
+
+
+  public void addVenue (Venue venue) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands_venues (venue_id, band_id) VALUES (:venue_id, :band_id)";
+      con.createQuery(sql)
+      .addParameter("band_id", this.getId())
+      .addParameter("venue_id", venue.getId())
+      .executeUpdate();
+    }
+  }
+
+  public List<Venue> getVenues() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT venues.* FROM venues " +
+      "JOIN bands_venues ON (venues.id = venue_id) " +
+      "JOIN bands ON (bands.id = band_id) " +
+      "WHERE bands.id = :id";
+      List<Venue> venues = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetch(Venue.class);
+      return venues;
+    }
+  }
   // public static void deleteAll() {
   //   String sqlJoin ="DELETE FROM recipes_tags";
   //   try(Connection con = DB.sql2o.open()) {
@@ -89,29 +112,6 @@ public class Band {
   //   try(Connection con = DB.sql2o.open()) {
   //     con.createQuery(sql)
   //       .executeUpdate();
-  //   }
-  // }
-  //
-  // public void addTag (Tag tag) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (:tag_id, :recipe_id)";
-  //     con.createQuery(sql)
-  //     .addParameter("recipe_id", this.getId())
-  //     .addParameter("tag_id", tag.getId())
-  //     .executeUpdate();
-  //   }
-  // }
-  //
-  // public List<Tag> getTags() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "SELECT tags.* FROM tags " +
-  //     "JOIN recipes_tags ON (tags.id = tag_id) " +
-  //     "JOIN recipes ON (recipes.id = recipe_id) " +
-  //     "WHERE recipes.id = :id";
-  //     List<Tag> tags = con.createQuery(sql)
-  //     .addParameter("id", id)
-  //     .executeAndFetch(Tag.class);
-  //     return tags;
   //   }
   // }
 }

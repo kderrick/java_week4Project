@@ -57,8 +57,33 @@ public class BandTest {
     newBand.delete();
     assertEquals(Band.all().size(), 0);
   }
-  //
-  //
+
+  @Test
+  public void addVenue_addsVenueToRecipe() {
+    Band newBand = new Band("The Smiths");
+    newBand.save();
+
+    Venue newVenue = new Venue("Moda Center");
+    newVenue.save();
+
+    newBand.addVenue(newVenue);
+    Venue savedVenue = newBand.getVenues().get(0);
+    assertTrue(newVenue.equals(savedVenue));
+  }
+
+  @Test
+  public void getVenues_getsRecipesVenuesByRecipeID() {
+    Band newBand = new Band("Young Thug");
+    newBand.save();
+
+    Venue newVenue = new Venue("Roseland");
+    newVenue.save();
+
+    newBand.addVenue(newVenue);
+    List savedVenues = newBand.getVenues();
+    assertEquals(savedVenues.size(), 1);
+  }
+
   // @Test
   // public void deleteAll_deletesAllRecipesAndRecipeTags() {
   //     Recipe firstRecipe = new Recipe("BLT");
@@ -80,31 +105,5 @@ public class BandTest {
   //     firstRecipe.addTag(firstRecipeTag);
   //     Recipe.deleteAll();
   //     assertEquals(firstRecipeTag.getRecipes().size(), 0);
-  // }
-
-  // @Test
-  // public void addTag_addsTagToRecipe() {
-  //   Recipe newRecipe = new Recipe("BLT");
-  //   newRecipe.save();
-  //
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //
-  //   newRecipe.addTag(newTag);
-  //   Tag savedTag = newRecipe.getTags().get(0);
-  //   assertTrue(newTag.equals(savedTag));
-  // }
-  //
-  // @Test
-  // public void getTags_getsRecipesTagsByRecipeID() {
-  //   Recipe newRecipe = new Recipe("BLT");
-  //   newRecipe.save();
-  //
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //
-  //   newRecipe.addTag(newTag);
-  //   List savedTags = newRecipe.getTags();
-  //   assertEquals(savedTags.size(), 1);
   // }
 }

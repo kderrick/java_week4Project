@@ -50,14 +50,14 @@ public class VenueTest {
     newVenue.update("Berbatis");
     assertEquals(Venue.all().get(0).getName(), ("Berbatis"));
   }
-  //
-  // @Test
-  // public void delete_deleteTagObject() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   newTag.delete();
-  //   assertEquals(Tag.all().size(), 0);
-  // }
+
+  @Test
+  public void delete_deleteVenueObject() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    newVenue.delete();
+    assertEquals(Venue.all().size(), 0);
+  }
   //
   // @Test
   // public void addRecipe_addsRecipeToTag() {
