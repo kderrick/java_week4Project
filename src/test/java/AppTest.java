@@ -38,13 +38,13 @@ public class AppTest extends FluentTest {
     submit("#addBand");
     assertThat(pageSource()).contains("The National");
   }
-  
+
   @Test
-  public void addTag() {
-    goTo("http://localhost:4567/tags");
-    fill("#tagTitle").with("History");
-    submit("#addTagBtn");
-    assertThat(pageSource()).contains("History");
+  public void addVenue() {
+    goTo("http://localhost:4567/venues");
+    fill("#venueName").with("Wonder Ballroom");
+    submit("#addVenueBtn");
+    assertThat(pageSource()).contains("Wonder Ballroom");
   }
   //
   // @Test
