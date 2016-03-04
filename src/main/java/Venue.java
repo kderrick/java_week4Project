@@ -35,36 +35,36 @@ public class Venue {
       this.getId() == newVenue.getId();
     }
   }
+
+  public void save() {
+    String sql = "INSERT INTO venues (name) VALUES (:name)";
+     try(Connection con = DB.sql2o.open()) {
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", name)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  public static Venue find(int id) {
+    String sql = "SELECT id, name FROM venues WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      Venue venue = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Venue.class);
+      return venue;
+    }
+  }
   //
-  // public void save() {
-  //   String sql = "INSERT INTO tags (title) VALUES (:title)";
-  //    try(Connection con = DB.sql2o.open()) {
-  //     this.id = (int) con.createQuery(sql, true)
-  //       .addParameter("title", title)
-  //       .executeUpdate()
-  //       .getKey();
-  //   }
-  // }
-  //
-  // public static Tag find(int id) {
-  //   String sql = "SELECT id, title FROM tags WHERE id = :id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     Tag tag = con.createQuery(sql)
-  //     .addParameter("id", id)
-  //     .executeAndFetchFirst(Tag.class);
-  //     return tag;
-  //   }
-  // }
-  //
-  // public void update(String title) {
-  //   String sql ="UPDATE tags SET title = :title WHERE id = :id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sql)
-  //     .addParameter("title", title)
-  //     .addParameter("id", id)
-  //     .executeUpdate();
-  //   }
-  // }
+  public void update(String name) {
+    String sql ="UPDATE venues SET name = :name WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+      .addParameter("name", name)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
   //
   // public void delete() {
   //   String sqlJoin ="DELETE FROM recipes_tags WHERE tag_id = :id";

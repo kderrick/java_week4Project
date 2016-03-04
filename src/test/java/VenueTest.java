@@ -14,42 +14,42 @@ public class VenueTest {
 
   @Test
   public void equals_returnsTrueIfTitlesAreTheSame() {
-    Venue firstVenue = new Venue("Mogwai");
-    Venue secondVenue = new Venue("Mogwai");
+    Venue firstVenue = new Venue("Crystal");
+    Venue secondVenue = new Venue("Crystal");
     assertTrue(firstVenue.equals(secondVenue));
   }
-  //
-  // @Test
-  // public void save_addsInstanceOfTagToDatabase() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   Tag savedTag = Tag.all().get(0);
-  //   assertTrue(newTag.equals(savedTag));
-  // }
-  //
-  // @Test
-  // public void save_assignsIdToObject() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   Tag savedTag = Tag.all().get(0);
-  //   assertEquals(newTag.getId(), savedTag.getId());
-  // }
-  //
-  // @Test
-  // public void find_locatesAllInstancesOfClassInDatabaseUsingId() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   Tag savedTag = Tag.find(newTag.getId());
-  //   assertTrue(newTag.equals(savedTag));
-  // }
-  //
-  // @Test
-  // public void update_updatesTitleOfObject() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   newTag.update("Italian");
-  //   assertEquals(Tag.all().get(0).getTitle(), ("Italian"));
-  // }
+
+  @Test
+  public void save_addsInstanceOfVenueToDatabase() {
+    Venue newVenue = new Venue("Roseland");
+    newVenue.save();
+    Venue savedVenue = Venue.all().get(0);
+    assertTrue(newVenue.equals(savedVenue));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Venue newVenue = new Venue("Star");
+    newVenue.save();
+    Venue savedVenue = Venue.all().get(0);
+    assertEquals(newVenue.getId(), savedVenue.getId());
+  }
+
+  @Test
+  public void find_locatesAllInstancesOfClassInDatabaseUsingId() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    Venue savedVenue = Venue.find(newVenue.getId());
+    assertTrue(newVenue.equals(savedVenue));
+  }
+
+  @Test
+  public void update_updatesNameOfObject() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    newVenue.update("Berbatis");
+    assertEquals(Venue.all().get(0).getName(), ("Berbatis"));
+  }
   //
   // @Test
   // public void delete_deleteTagObject() {
