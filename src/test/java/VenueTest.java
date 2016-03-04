@@ -84,30 +84,28 @@ public class VenueTest {
     List savedBand = newVenue.getBands();
     assertEquals(savedBand.size(), 1);
   }
-  //
-  // @Test
-  // public void deleteAll_deletesAllTags() {
-  //     Tag firstTag = new Tag("BLT");
-  //     Tag secondTag = new Tag("Taco");
-  //     firstTag.save();
-  //     secondTag.save();
-  //     Recipe firstTagRecipe = new Recipe("firstRecipe");
-  //     firstTag.addRecipe(firstTagRecipe);
-  //     Tag.deleteAll();
-  //     assertEquals(Tag.all().size(), 0);
-  // }
-  //
-  // @Test
-  // public void deleteAll_deletesAllRecipeTagAssociations() {
-  //     Tag firstTag = new Tag("BLT");
-  //     Tag secondTag = new Tag("Taco");
-  //     firstTag.save();
-  //     secondTag.save();
-  //     Recipe firstTagRecipe = new Recipe("firstRecipe");
-  //     firstTag.addRecipe(firstTagRecipe);
-  //     Tag.deleteAll();
-  //     assertEquals(firstTagRecipe.getTags().size(), 0);
-  // }
 
+  @Test
+  public void deleteAll_deletesAllVenues() {
+      Venue firstVenue = new Venue("Roseland");
+      Venue secondVenue = new Venue("Wonder");
+      firstVenue.save();
+      secondVenue.save();
+      Band firstVenueBand = new Band("The Beatles");
+      firstVenue.addBand(firstVenueBand);
+      Venue.deleteAll();
+      assertEquals(Venue.all().size(), 0);
+  }
 
+  @Test
+  public void deleteAll_deletesAllBandVenueAssociations() {
+      Venue firstVenue = new Venue("Wonder");
+      Venue secondVenue = new Venue("Crystal");
+      firstVenue.save();
+      secondVenue.save();
+      Band firstVenueBand = new Band("Air");
+      firstVenue.addBand(firstVenueBand);
+      Venue.deleteAll();
+      assertEquals(firstVenueBand.getVenues().size(), 0);
+  }
 }
