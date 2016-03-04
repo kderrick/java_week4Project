@@ -44,26 +44,26 @@ public class Band {
         .getKey();
     }
   }
-  //
-  // public static Recipe find(int id) {
-  //   String sql = "SELECT * FROM recipes WHERE id = :id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     Recipe recipe = con.createQuery(sql)
-  //     .addParameter("id", id)
-  //     .executeAndFetchFirst(Recipe.class);
-  //     return recipe;
-  //   }
-  // }
-  //
-  // public void updateTitle(String title) {
-  //   String sql ="UPDATE recipes SET title = :title WHERE id = :id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sql)
-  //     .addParameter("title", title)
-  //     .addParameter("id", id)
-  //     .executeUpdate();
-  //   }
-  // }
+
+  public static Band find(int id) {
+    String sql = "SELECT * FROM bands WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      Band band = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Band.class);
+      return band;
+    }
+  }
+
+  public void updateName(String name) {
+    String sql ="UPDATE bands SET name = :name WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+      .addParameter("name", name)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
   //
   // public void updateIngredients(String ingredients) {
   //   String sql ="UPDATE recipes SET ingredients = :ingredients WHERE id = :id";

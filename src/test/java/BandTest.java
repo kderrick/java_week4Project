@@ -34,22 +34,22 @@ public class BandTest {
     Band savedBand = Band.all().get(0);
     assertEquals(newBand.getId(), savedBand.getId());
   }
-  //
-  // @Test
-  // public void find_locatesAllInstancesOfClassInDatabaseUsingId() {
-  //   Recipe newRecipe = new Recipe("BLT");
-  //   newRecipe.save();
-  //   Recipe savedRecipe = Recipe.find(newRecipe.getId());
-  //   assertTrue(newRecipe.equals(savedRecipe));
-  // }
-  //
-  // @Test
-  // public void updateTitle_updatesTitleOfObject() {
-  //   Recipe newRecipe = new Recipe("BLT");
-  //   newRecipe.save();
-  //   newRecipe.updateTitle("Susan");
-  //   assertEquals(Recipe.all().get(0).getTitle(), ("Susan"));
-  // }
+
+  @Test
+  public void find_locatesAllInstancesOfClassInDatabaseUsingId() {
+    Band newBand = new Band("The Misfits");
+    newBand.save();
+    Band savedBand = Band.find(newBand.getId());
+    assertTrue(newBand.equals(savedBand));
+  }
+
+  @Test
+  public void updateName_updatesNameOfObject() {
+    Band newBand = new Band("Mogwai");
+    newBand.save();
+    newBand.updateName("Mono");
+    assertEquals(Band.all().get(0).getName(), ("Mono"));
+  }
   //
   // @Test
   // public void updateIngredients_updatesIngredientsOfObject() {
