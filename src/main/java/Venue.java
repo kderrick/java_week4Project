@@ -17,24 +17,24 @@ public class Venue {
   public int getId() {
     return id;
   }
-  //
-  // public static  List<Tag> all() {
-  //   String sql = "SELECT * FROM tags";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     return con.createQuery(sql).executeAndFetch(Tag.class);
-  //   }
-  // }
-  //
-  // @Override
-  // public boolean equals(Object otherTag) {
-  //   if (!(otherTag instanceof Tag)) {
-  //     return false;
-  //   } else {
-  //     Tag newTag = (Tag) otherTag;
-  //     return this.getTitle().equals(newTag.getTitle()) &&
-  //     this.getId() == newTag.getId();
-  //   }
-  // }
+
+  public static  List<Venue> all() {
+    String sql = "SELECT * FROM venues";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Venue.class);
+    }
+  }
+
+  @Override
+  public boolean equals(Object otherVenue) {
+    if (!(otherVenue instanceof Venue)) {
+      return false;
+    } else {
+      Venue newVenue = (Venue) otherVenue;
+      return this.getName().equals(newVenue.getName()) &&
+      this.getId() == newVenue.getId();
+    }
+  }
   //
   // public void save() {
   //   String sql = "INSERT INTO tags (title) VALUES (:title)";

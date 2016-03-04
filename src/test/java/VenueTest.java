@@ -7,17 +7,17 @@ public class VenueTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  // public void all_emptyAtFirst() {
-  //   assertEquals(Tag.all().size(), 0);
-  // }
-  //
-  // @Test
-  // public void equals_returnsTrueIfTitlesAreTheSame() {
-  //   Tag firstTag = new Tag("Mexican");
-  //   Tag secondTag = new Tag("Mexican");
-  //   assertTrue(firstTag.equals(secondTag));
-  // }
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Venue.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueIfTitlesAreTheSame() {
+    Venue firstVenue = new Venue("Mogwai");
+    Venue secondVenue = new Venue("Mogwai");
+    assertTrue(firstVenue.equals(secondVenue));
+  }
   //
   // @Test
   // public void save_addsInstanceOfTagToDatabase() {
