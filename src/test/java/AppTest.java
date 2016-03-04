@@ -122,17 +122,17 @@ public class AppTest extends FluentTest {
     submit("#assignBandBtn");
     assertThat(pageSource()).contains("<a href=\"/bands/" + newBand.getId() + "\">");
   }
-  //
-  // @Test
-  // public void deleteAllBands_displaysNoRecipesOnRecipePage() {
-  //   Recipe newRecipe = new Recipe("Tacos");
-  //   newRecipe.save();
-  //   goTo("http://localhost:4567/bands");
-  //   submit("#deleteAllRecipesBtn");
-  //   assertThat(pageSource()).doesNotContain("Tacos");
-  //   assertThat(pageSource()).doesNotContain("Error");
-  // }
-  //
+
+  @Test
+  public void deleteAllBands_displaysNoBandsOnBandPage() {
+    Band newBand = new Band("The National");
+    newBand.save();
+    goTo("http://localhost:4567/bands");
+    submit("#deleteAllBandsBtn");
+    assertThat(pageSource()).doesNotContain("The National");
+    assertThat(pageSource()).doesNotContain("Error");
+  }
+
   @Test
   public void updateAllBands_updatesName() {
     Band newBand = new Band("The National");
@@ -143,22 +143,14 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("UpdatedName");
   }
 
-
-  // @Test
-  // public void checkThatSubmitButtonWorksOnBands() {
-  //   goTo("http://localhost:4567/bands");
-  //   fill()
-  // }
-
-
-  /*
   @Test
-  public void negativeNumber() {
-    goTo("http://localhost:4567");
-    fill("#userChange").with("-87");
-    submit(".btn");
-    assertThat(pageSource()).contains("Please enter a positive value");
+  public void updateAllVenues_updatesName() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    goTo("http://localhost:4567/venues/" + newVenue.getId());
+    fill("#updateVenueName").with("UpdatedName");
+    submit("#updateVenue");
+    assertThat(pageSource()).contains("UpdatedName");
   }
-*/
 
 }

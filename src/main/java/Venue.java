@@ -56,7 +56,7 @@ public class Venue {
     }
   }
   //
-  public void update(String name) {
+  public void updateName(String name) {
     String sql ="UPDATE venues SET name = :name WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)

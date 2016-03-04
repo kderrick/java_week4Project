@@ -24,6 +24,13 @@ venue.vtl
 
 <hr>
 
+<form action="/venues/$venue.getId()/update" method="post">
+  <label for="updateVenueName">Venue Name</label>
+  <input id="updateVenueName" name="updateVenueName" type="text" required autofocus="autofocus" value="$venue.getName()">
+
+  <button type="submit" id="updateVenue">Update Venue</button>
+</form>
+
   <a href="/bands">Return to Band List</a>
   <p></p>
   <a href="/tags">Return to Venue List</a>

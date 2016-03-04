@@ -47,7 +47,7 @@ public class VenueTest {
   public void update_updatesNameOfObject() {
     Venue newVenue = new Venue("Wonder");
     newVenue.save();
-    newVenue.update("Berbatis");
+    newVenue.updateName("Berbatis");
     assertEquals(Venue.all().get(0).getName(), ("Berbatis"));
   }
 

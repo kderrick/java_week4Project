@@ -28,13 +28,13 @@ public class App {
       model.put("template", "templates/venues.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-    //
-    // post("/recipes/deleteAll", (request, response) -> {
-    //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     Band.deleteAll();
-    //     response.redirect("/recipes");
-    //     return null;
-    // });
+
+    post("/bands/deleteAll", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        Band.deleteAll();
+        response.redirect("/bands");
+        return null;
+    });
     //
     post("/bands/:id/update", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -43,6 +43,16 @@ public class App {
         String bandName = request.queryParams("updateBandName");
         band.updateName(bandName);
         response.redirect("/bands/" + id);
+        return null;
+    });
+
+    post("/venues/:id/update", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        int id = Integer.parseInt(request.params("id"));
+        Venue venue = Venue.find(id);
+        String venueName = request.queryParams("updateVenueName");
+        venue.updateName(venueName);
+        response.redirect("/venues/" + id);
         return null;
     });
     //
@@ -56,12 +66,12 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
     //
-    // post("/tags/deleteAll", (request, response) -> {
-    //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     Venue.deleteAll();
-    //     response.redirect("/tags");
-    //     return null;
-    // });
+    post("/venues/deleteAll", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        Venue.deleteAll();
+        response.redirect("/venues");
+        return null;
+    });
 
     get("/venues/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
