@@ -18,22 +18,22 @@ public class BandTest {
     Band secondBand = new Band("Sigur Ros");
     assertTrue(firstBand.equals(secondBand));
   }
-  //
-  // @Test
-  // public void save_addsInstanceOfRecipeToDatabase() {
-  //   Recipe newRecipe = new Recipe("BLT");
-  //   newRecipe.save();
-  //   Recipe savedRecipe = Recipe.all().get(0);
-  //   assertTrue(newRecipe.equals(savedRecipe));
-  // }
-  //
-  // @Test
-  // public void save_assignsIdToObject() {
-  //   Recipe newRecipe = new Recipe("Tacos");
-  //   newRecipe.save();
-  //   Recipe savedRecipe = Recipe.all().get(0);
-  //   assertEquals(newRecipe.getId(), savedRecipe.getId());
-  // }
+
+  @Test
+  public void save_addsInstanceOfBandToDatabase() {
+    Band newBand = new Band("Ecco");
+    newBand.save();
+    Band savedBand = Band.all().get(0);
+    assertTrue(newBand.equals(savedBand));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Band newBand = new Band("Elliott Smith");
+    newBand.save();
+    Band savedBand = Band.all().get(0);
+    assertEquals(newBand.getId(), savedBand.getId());
+  }
   //
   // @Test
   // public void find_locatesAllInstancesOfClassInDatabaseUsingId() {
