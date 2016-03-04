@@ -3,20 +3,20 @@ import java.util.ArrayList;
 import org.sql2o.*;
 
 public class Venue {
-  // private String title;
-  // private int id;
-  //
-  // public Tag (String title) {
-  //   this.title = title;
-  // }
-  //
-  // public String getTitle() {
-  //   return title;
-  // }
-  //
-  // public int getId() {
-  //   return id;
-  // }
+  private String name;
+  private int id;
+
+  public Venue(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public int getId() {
+    return id;
+  }
   //
   // public static  List<Tag> all() {
   //   String sql = "SELECT * FROM tags";

@@ -58,6 +58,30 @@ public class BandTest {
     assertEquals(Band.all().size(), 0);
   }
   //
+  //
+  // @Test
+  // public void deleteAll_deletesAllRecipesAndRecipeTags() {
+  //     Recipe firstRecipe = new Recipe("BLT");
+  //     Recipe secondRecipe = new Recipe("Taco");
+  //     firstRecipe.save();
+  //     secondRecipe.save();
+  //     Tag firstRecipeTag = new Tag("firstTag");
+  //     firstRecipe.addTag(firstRecipeTag);
+  //     Recipe.deleteAll();
+  //     assertEquals(Recipe.all().size(), 0);
+  // }
+  //
+  // @Test
+  // public void deleteAll_deletesRecipeTagAssociations () {
+  //     Recipe firstRecipe = new Recipe("BLT");
+  //     firstRecipe.save();
+  //     int recipeId = firstRecipe.getId();
+  //     Tag firstRecipeTag = new Tag("firstTag");
+  //     firstRecipe.addTag(firstRecipeTag);
+  //     Recipe.deleteAll();
+  //     assertEquals(firstRecipeTag.getRecipes().size(), 0);
+  // }
+
   // @Test
   // public void addTag_addsTagToRecipe() {
   //   Recipe newRecipe = new Recipe("BLT");
@@ -83,28 +107,4 @@ public class BandTest {
   //   List savedTags = newRecipe.getTags();
   //   assertEquals(savedTags.size(), 1);
   // }
-  //
-  // @Test
-  // public void deleteAll_deletesAllRecipesAndRecipeTags() {
-  //     Recipe firstRecipe = new Recipe("BLT");
-  //     Recipe secondRecipe = new Recipe("Taco");
-  //     firstRecipe.save();
-  //     secondRecipe.save();
-  //     Tag firstRecipeTag = new Tag("firstTag");
-  //     firstRecipe.addTag(firstRecipeTag);
-  //     Recipe.deleteAll();
-  //     assertEquals(Recipe.all().size(), 0);
-  // }
-  //
-  // @Test
-  // public void deleteAll_deletesRecipeTagAssociations () {
-  //     Recipe firstRecipe = new Recipe("BLT");
-  //     firstRecipe.save();
-  //     int recipeId = firstRecipe.getId();
-  //     Tag firstRecipeTag = new Tag("firstTag");
-  //     firstRecipe.addTag(firstRecipeTag);
-  //     Recipe.deleteAll();
-  //     assertEquals(firstRecipeTag.getRecipes().size(), 0);
-  // }
-
 }
