@@ -50,38 +50,13 @@ public class BandTest {
     newBand.updateName("Mono");
     assertEquals(Band.all().get(0).getName(), ("Mono"));
   }
-  //
-  // @Test
-  // public void updateIngredients_updatesIngredientsOfObject() {
-  //   Recipe newRecipe = new Recipe("Sally", "Tomatoes");
-  //   newRecipe.save();
-  //   newRecipe.updateIngredients("1901/01/01");
-  //   assertEquals(Recipe.all().get(0).getIngredients(), ("1901/01/01"));
-  // }
-  //
-  // @Test
-  // public void updateInstructions_updatesInstructionsOfObject() {
-  //   Recipe newRecipe = new Recipe("Sally", "Tomatoes", "Bake 350");
-  //   newRecipe.save();
-  //   newRecipe.updateInstructions("1901/01/01");
-  //   assertEquals(Recipe.all().get(0).getInstructions(), ("1901/01/01"));
-  // }
-  //
-  // @Test
-  // public void updateRating_updatesRatingOfObject() {
-  //   Recipe newRecipe = new Recipe("Sally", "Tomatoes", "Bake 350", 1);
-  //   newRecipe.save();
-  //   newRecipe.updateRating(4);
-  //   assertEquals(Recipe.all().get(0).getRating(), (4));
-  // }
-  //
-  // @Test
-  // public void deleteRecipe() {
-  //   Recipe newRecipe = new Recipe("BLT");
-  //   newRecipe.save();
-  //   newRecipe.delete();
-  //   assertEquals(Recipe.all().size(), 0);
-  // }
+  @Test
+  public void deleteBand() {
+    Band newBand = new Band("Bon Iver");
+    newBand.save();
+    newBand.delete();
+    assertEquals(Band.all().size(), 0);
+  }
   //
   // @Test
   // public void addTag_addsTagToRecipe() {
