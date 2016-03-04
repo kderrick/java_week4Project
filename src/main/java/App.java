@@ -9,19 +9,18 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-    // get("/", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   model.put("template", "templates/index.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("/recipes", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   model.put("recipes", Recipe.all());
-    //
-    //   model.put("template", "templates/recipes.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    get("/", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/bands", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("bands", Band.all());
+      model.put("template", "templates/bands.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
     //
     // get("/tags", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
@@ -75,16 +74,14 @@ public class App {
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
     //
-    // post("/recipes", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //
-    //   String recipe_name = request.queryParams("recipe_name");
-    //   String ingredients = request.queryParams("ingredients");
-    //   Recipe newRecipe = new Recipe(recipe_name, ingredients);
-    //   newRecipe.save();
-    //   response.redirect("/recipes");
-    //   return null;
-    // });
+    post("/bands", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String band_name = request.queryParams("band_name");
+      Band newBand = new Band(band_name);
+      newBand.save();
+      response.redirect("/bands");
+      return null;
+    });
     //
     // post("/recipes/:id/delete", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();

@@ -24,30 +24,28 @@ public class AppTest extends FluentTest {
   public static ServerRule server = new ServerRule();
 
 
-  // @Test
-  // public void rootTest() {
-  //     goTo("http://localhost:4567/");
-  //     assertThat(pageSource()).contains("Recipe Box");
-  // }
-  //
-  //
-  // @Test
-  // public void addRecipe() {
-  //   goTo("http://localhost:4567/recipes");
-  //   fill("#recipe_name").with("Tacos");
-  //   fill("#ingredients").with("Beef");
-  //   submit("#addRecipe");
-  //   assertThat(pageSource()).contains("Tacos");
-  //   assertThat(pageSource()).contains("Beef");
-  // }
-  //
-  // @Test
-  // public void addTag() {
-  //   goTo("http://localhost:4567/tags");
-  //   fill("#tagTitle").with("History");
-  //   submit("#addTagBtn");
-  //   assertThat(pageSource()).contains("History");
-  // }
+  @Test
+  public void rootTest() {
+      goTo("http://localhost:4567/");
+      assertThat(pageSource()).contains("Database");
+  }
+
+
+  @Test
+  public void addBand() {
+    goTo("http://localhost:4567/bands");
+    fill("#band_name").with("The National");
+    submit("#addBand");
+    assertThat(pageSource()).contains("The National");
+  }
+  
+  @Test
+  public void addTag() {
+    goTo("http://localhost:4567/tags");
+    fill("#tagTitle").with("History");
+    submit("#addTagBtn");
+    assertThat(pageSource()).contains("History");
+  }
   //
   // @Test
   // public void addTagToRecipe() {

@@ -1,36 +1,30 @@
-recipes.vtl
+bands.vtl
 
-<h2>All Recipes</h2>
+<h2>All Bands</h2>
 
 <ul>
-#foreach ($recipe in $recipes)
-  <li><a href="/recipes/$recipe.getId()">$recipe.getTitle(), $recipe.getIngredients() </a></li>
-  <form action="/recipes/$recipe.getId()/delete" class="form-inline" method="post">
-    <input id="recipeId" name="recipeId" type="hidden" value="$recipe.getId()">
-    <button id="$recipe.getId()" type ="submit">Delete Recipe</button>
+#foreach ($band in $bands)
+  <li><a href="/bands/$band.getId()">$band.getName()</a></li>
+  <form action="/bands/$band.getId()/delete" method="post">
+    <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
+    <button id="$band.getId()" type ="submit">Delete Band</button>
   </form>
 #end
 </ul>
 
-<form action="/recipes" method="post">
-  <label for="recipe_name">Recipe Name</label>
-  <input id="recipe_name" name="recipe_name" type="text" required autofocus="autofocus">
-
-  <label for="ingredients">Recipe Ingredients</label>
-  <input id="ingredients" name="ingredients" type="text" required>
-
-  <button type="submit" id="addRecipe">Add Recipe</button>
+<form action="/bands" method="post">
+  <label for="band_name">Band Name</label>
+  <input id="band_name" name="band_name" type="text" required autofocus="autofocus">
+  <button type="submit" id="addBand">Add Band</button>
 </form>
 
 <hr>
 
-<a href="/recipes">Return to Recipe List</a>
+<a href="/bands">Return to Band List</a>
 <p></p>
-<a href="/tags">Return to Tag List</a>
+<a href="/venues">Return to Venue List</a>
 
-<p></p>
-<p></p>
 
-<form action="/recipes/deleteAll" method="post">
-    <button id="deleteAllRecipesBtn" type="submit" class="btn btn-warning">Delete All Recipes</button>
+<form action="/bands/deleteAll" method="post">
+    <button id="deleteAllBandsBtn" type="submit" class="btn btn-warning">Delete All Bands</button>
 </form>
