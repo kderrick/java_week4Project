@@ -31,21 +31,20 @@ public class App {
     //
     // post("/recipes/deleteAll", (request, response) -> {
     //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     Recipe.deleteAll();
+    //     Band.deleteAll();
     //     response.redirect("/recipes");
     //     return null;
     // });
     //
-    // post("/recipes/:id/update", (request, response) -> {
-    //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     int id = Integer.parseInt(request.params("id"));
-    //     Recipe recipe = Recipe.find(id);
-    //     String recipeTitle = request.queryParams("updateRecipeTitle");
-    //     String recipeIngredients = request.queryParams("updateRecipeIngredients");
-    //     recipe.updateAll(recipeTitle, recipeIngredients);
-    //     response.redirect("/recipes/" + id);
-    //     return null;
-    // });
+    post("/bands/:id/update", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        int id = Integer.parseInt(request.params("id"));
+        Band band = Band.find(id);
+        String bandName = request.queryParams("updateBandName");
+        band.updateName(bandName);
+        response.redirect("/bands/" + id);
+        return null;
+    });
     //
     get("/bands/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();

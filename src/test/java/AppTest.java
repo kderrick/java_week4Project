@@ -109,48 +109,44 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("<a href=\"/venues/" + newVenue.getId() + "\">");
 
   }
+
+  @Test
+  public void assignBandToVenue() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    Band newBand = new Band("The National");
+    newBand.save();
+    // newBand.addVenue(newVenue);
+    goTo("http://localhost:4567/venues/" + newVenue.getId());
+    fillSelect("#band_id").withIndex(0);
+    submit("#assignBandBtn");
+    assertThat(pageSource()).contains("<a href=\"/bands/" + newBand.getId() + "\">");
+  }
   //
   // @Test
-  // public void assignBandToTag() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
+  // public void deleteAllBands_displaysNoRecipesOnRecipePage() {
   //   Recipe newRecipe = new Recipe("Tacos");
   //   newRecipe.save();
-  //   // newRecipe.addTag(newTag);
-  //   goTo("http://localhost:4567/tags/" + newTag.getId());
-  //   fillSelect("#recipe_id").withIndex(0);
-  //   submit("#assignRecipeBtn");
-  //   assertThat(pageSource()).contains("<a href=\"/recipes/" + newRecipe.getId() + "\">");
-  //
-  // }
-  //
-  // @Test
-  // public void deleteAllRecipes_displaysNoRecipesOnRecipePage() {
-  //   Recipe newRecipe = new Recipe("Tacos");
-  //   newRecipe.save();
-  //   goTo("http://localhost:4567/recipes");
+  //   goTo("http://localhost:4567/bands");
   //   submit("#deleteAllRecipesBtn");
   //   assertThat(pageSource()).doesNotContain("Tacos");
   //   assertThat(pageSource()).doesNotContain("Error");
   // }
   //
-  // @Test
-  // public void updateAllRecipes_updatesNameAndIngredients() {
-  //   Recipe newRecipe = new Recipe("Tacos", "Beef");
-  //   newRecipe.save();
-  //
-  //   goTo("http://localhost:4567/recipes/" + newRecipe.getId());
-  //   fill("#updateRecipeTitle").with("UpdatedTitle");
-  //   fill("#updateRecipeIngredients").with("Yak Butt");
-  //   submit("#updateRecipe");
-  //   assertThat(pageSource()).contains("UpdatedTitle");
-  //   assertThat(pageSource()).contains("Yak Butt");
-  // }
+  @Test
+  public void updateAllBands_updatesName() {
+    Band newBand = new Band("The National");
+    newBand.save();
+    goTo("http://localhost:4567/bands/" + newBand.getId());
+    fill("#updateBandName").with("UpdatedName");
+    submit("#updateBand");
+    assertThat(pageSource()).contains("UpdatedName");
+  }
 
 
   // @Test
-  // public void checkThatSubmitButtonWorksOnRecipes() {
-  //   goTo("http://localhost:4567/recipes");
+  // public void checkThatSubmitButtonWorksOnBands() {
+  //   goTo("http://localhost:4567/bands");
   //   fill()
   // }
 
