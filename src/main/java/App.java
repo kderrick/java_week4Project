@@ -82,15 +82,15 @@ public class App {
       response.redirect("/bands");
       return null;
     });
-    //
-    // post("/recipes/:id/delete", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int recipeId = Integer.parseInt(request.queryParams("recipeId"));
-    //   Recipe recipe = Recipe.find(recipeId);
-    //   recipe.delete();
-    //   response.redirect("/recipes");
-    //   return null;
-    // });
+
+    post("/bands/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int bandId = Integer.parseInt(request.queryParams("bandId"));
+      Band band = Band.find(bandId);
+      band.delete();
+      response.redirect("/bands");
+      return null;
+    });
     //
     post("/bands/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();

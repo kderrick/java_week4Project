@@ -70,19 +70,19 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Roseland");
     assertThat(pageSource()).contains("Do Make Say Think");
   }
-  //
-  // @Test
-  // public void deleteRecipe() {
-  //   Venue newTag = new Tag("Mexican");
-  //   newTag.save();
-  //   Recipe newRecipe = new Recipe("Tacos");
-  //   newRecipe.save();
-  //   newRecipe.addTag(newTag);
-  //   String recipeId = "#" + newRecipe.getId();
-  //   goTo("http://localhost:4567/recipes");
-  //   submit(recipeId);
-  //   assertThat(pageSource()).doesNotContain(newRecipe.getTitle());
-  // }
+
+  @Test
+  public void deleteBand() {
+    Venue newVenue = new Venue("Wonder");
+    newVenue.save();
+    Band newBand = new Band("El VY");
+    newBand.save();
+    newBand.addVenue(newVenue);
+    String bandId = "#" + newBand.getId();
+    goTo("http://localhost:4567/bands");
+    submit(bandId);
+    assertThat(pageSource()).doesNotContain(newBand.getName());
+  }
   //
   // @Test
   // public void deleteTag() {
@@ -102,7 +102,7 @@ public class AppTest extends FluentTest {
   //   Recipe newRecipe = new Recipe("Tacos");
   //   newRecipe.save();
   //   // newRecipe.addTag(newTag);
-  //   goTo("http://localhost:4567/recipes/" + newRecipe.getId());
+  //   goTo("http://localhost:4567/bands/" + newRecipe.getId());
   //   fillSelect("#tagTitle").withIndex(0);
   //   submit("#assignTagBtn");
   //   assertThat(pageSource()).contains("<a href=\"/tags/" + newTag.getId() + "\">");
