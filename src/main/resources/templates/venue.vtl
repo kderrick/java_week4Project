@@ -1,29 +1,29 @@
-tag.vtl
+venue.vtl
 
-<h2>$tag.getTitle()</h2>
-#if ($tag.getRecipes())
-  <p>Here are the recipes associated with this tag:</p>
-  #foreach ($recipe in $tag.getRecipes())
-    <li><a href="/recipes/$recipe.getId()">$recipe.getTitle()</a></li>
+<h2>$venue.getName()</h2>
+#if ($venue.getBands())
+  <p>Here are the bands that have played at this venue:</p>
+  #foreach ($band in $venue.getBands())
+    <li><a href="/bands/$band.getId()">$band.getName()</a></li>
   #end
 #end
 
-<form action="/tags/$tag.getId()" method="post">
+<form action="/venues/$venue.getId()" method="post">
 
-  <input id="tag_id" name="tag_id" type="hidden" value="$tag.getId()">
+  <input id="venue_id" name="venue_id" type="hidden" value="$venue.getId()">
 
 
-  <label for="recipe_id">Assign Recipe</label>
-  <select id="recipe_id" name="recipe_id" type="text">
-    #foreach($recipe in $allRecipes)
-    <option value="$recipe.getId()">$recipe.getTitle()</option>
+  <label for="band_id">Assign Band</label>
+  <select id="band_id" name="band_id" type="text">
+    #foreach($band in $allBands)
+    <option value="$band.getId()">$band.getName()</option>
     #end
   </select>
-  <button id="assignRecipeBtn" type="submit">Assign Recipe</button>
+  <button id="assignBandBtn" type="submit">Assign Band</button>
 </form>
 
 <hr>
 
-  <a href="/recipes">Return to Recipe List</a>
+  <a href="/bands">Return to Band List</a>
   <p></p>
-  <a href="/tags">Return to Tag List</a>
+  <a href="/tags">Return to Venue List</a>

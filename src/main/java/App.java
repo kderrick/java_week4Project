@@ -63,16 +63,16 @@ public class App {
     //     response.redirect("/tags");
     //     return null;
     // });
-    //
-    // get("/tags/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int id = Integer.parseInt(request.params("id"));
-    //   Tag tag = Tag.find(id);
-    //   model.put("tag", tag);
-    //   model.put("allRecipes", Recipe.all());
-    //   model.put("template", "templates/tag.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+
+    get("/venues/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Venue venue = Venue.find(id);
+      model.put("venue", venue);
+      model.put("allBands", Band.all());
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
     //
     post("/bands", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -102,17 +102,17 @@ public class App {
       response.redirect("/bands/" + bandId);
       return null;
     });
-    //
-    // post("/tags/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int tagId = Integer.parseInt(request.queryParams("tag_id"));
-    //   int recipeId = Integer.parseInt(request.queryParams("recipe_id"));
-    //   Recipe recipe = Recipe.find(recipeId);
-    //   Tag tag = Tag.find(tagId);
-    //   tag.addRecipe(recipe);
-    //   response.redirect("/tags/" + tagId);
-    //   return null;
-    // });
+
+    post("/venues/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int venueId = Integer.parseInt(request.queryParams("venue_id"));
+      int bandId = Integer.parseInt(request.queryParams("band_id"));
+      Band band = Band.find(bandId);
+      Venue venue = Venue.find(venueId);
+      venue.addBand(band);
+      response.redirect("/venues/" + venueId);
+      return null;
+    });
     //
     post("/venues", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
