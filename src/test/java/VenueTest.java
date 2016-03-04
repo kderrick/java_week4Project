@@ -58,32 +58,32 @@ public class VenueTest {
     newVenue.delete();
     assertEquals(Venue.all().size(), 0);
   }
-  //
-  // @Test
-  // public void addRecipe_addsRecipeToTag() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //
-  //   Recipe newRecipe = new Recipe("Enchilada");
-  //   newRecipe.save();
-  //
-  //   newTag.addRecipe(newRecipe);
-  //   Recipe savedRecipe = newTag.getRecipes().get(0);
-  //   assertTrue(newRecipe.equals(savedRecipe));
-  // }
-  //
-  // @Test
-  // public void getRecipe_getsTagRecipeByTagID() {
-  //   Tag newTag = new Tag("Mexican");
-  //   newTag.save();
-  //
-  //   Recipe newRecipe = new Recipe("Tacos");
-  //   newRecipe.save();
-  //
-  //   newTag.addRecipe(newRecipe);
-  //   List savedRecipe = newTag.getRecipes();
-  //   assertEquals(savedRecipe.size(), 1);
-  // }
+
+  @Test
+  public void addBand_addsBandToVenue() {
+    Venue newVenue = new Venue("Roseland");
+    newVenue.save();
+
+    Band newBand = new Band("Elliott Smith");
+    newBand.save();
+
+    newVenue.addBand(newBand);
+    Band savedBand = newVenue.getBands().get(0);
+    assertTrue(newBand.equals(savedBand));
+  }
+
+  @Test
+  public void getBand_getsVenueBandByVenueID() {
+    Venue newVenue = new Venue("Mexican");
+    newVenue.save();
+
+    Band newBand = new Band("Tacos");
+    newBand.save();
+
+    newVenue.addBand(newBand);
+    List savedBand = newVenue.getBands();
+    assertEquals(savedBand.size(), 1);
+  }
   //
   // @Test
   // public void deleteAll_deletesAllTags() {

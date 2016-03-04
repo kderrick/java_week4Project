@@ -102,16 +102,16 @@ public class Band {
       return venues;
     }
   }
-  // public static void deleteAll() {
-  //   String sqlJoin ="DELETE FROM recipes_tags";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sqlJoin)
-  //       .executeUpdate();
-  //   }
-  //   String sql ="DELETE FROM recipes ";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sql)
-  //       .executeUpdate();
-  //   }
-  // }
+  public static void deleteAll() {
+    String sqlJoin ="DELETE FROM bands_venues";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sqlJoin)
+        .executeUpdate();
+    }
+    String sql ="DELETE FROM bands ";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .executeUpdate();
+    }
+  }
 }

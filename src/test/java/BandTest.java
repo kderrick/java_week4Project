@@ -72,7 +72,7 @@ public class BandTest {
   }
 
   @Test
-  public void getVenues_getsRecipesVenuesByRecipeID() {
+  public void getVenues_getsBandsVenuesByBandID() {
     Band newBand = new Band("Young Thug");
     newBand.save();
 
@@ -84,17 +84,17 @@ public class BandTest {
     assertEquals(savedVenues.size(), 1);
   }
 
-  // @Test
-  // public void deleteAll_deletesAllRecipesAndRecipeTags() {
-  //     Recipe firstRecipe = new Recipe("BLT");
-  //     Recipe secondRecipe = new Recipe("Taco");
-  //     firstRecipe.save();
-  //     secondRecipe.save();
-  //     Tag firstRecipeTag = new Tag("firstTag");
-  //     firstRecipe.addTag(firstRecipeTag);
-  //     Recipe.deleteAll();
-  //     assertEquals(Recipe.all().size(), 0);
-  // }
+  @Test
+  public void deleteAll_deletesAllBandsAndBandVenues() {
+      Band firstBand = new Band("Black Sabbath");
+      Band secondBand = new Band("Air");
+      firstBand.save();
+      secondBand.save();
+      Venue firstBandVenue = new Venue("Crystal");
+      firstBand.addVenue(firstBandVenue);
+      Band.deleteAll();
+      assertEquals(Band.all().size(), 0);
+  }
   //
   // @Test
   // public void deleteAll_deletesRecipeTagAssociations () {

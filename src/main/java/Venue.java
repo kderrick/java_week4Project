@@ -80,29 +80,29 @@ public class Venue {
         .executeUpdate();
     }
   }
-  // public void addRecipe (Recipe recipe) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "INSERT INTO recipes_tags (recipe_id, tag_id) VALUES (:recipe_id, :tag_id)";
-  //     con.createQuery(sql)
-  //     .addParameter("tag_id", this.getId())
-  //     .addParameter("recipe_id", recipe.getId())
-  //     .executeUpdate();
-  //   }
-  // }
-  //
-  // public List<Recipe> getRecipes() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //
-  //     String sql = "SELECT recipes.* FROM tags " +
-  //     "JOIN recipes_tags ON (tags.id = tag_id) " +
-  //     "JOIN recipes ON (recipe_id = recipes.id) " +
-  //     "WHERE tags.id = :id";
-  //     List<Recipe> recipes = con.createQuery(sql)
-  //     .addParameter("id", id)
-  //     .executeAndFetch(Recipe.class);
-  //     return recipes;
-  //   }
-  // }
+  public void addBand (Band band) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+      con.createQuery(sql)
+      .addParameter("venue_id", this.getId())
+      .addParameter("band_id", band.getId())
+      .executeUpdate();
+    }
+  }
+
+  public List<Band> getBands() {
+    try(Connection con = DB.sql2o.open()) {
+
+      String sql = "SELECT bands.* FROM venues " +
+      "JOIN bands_venues ON (venues.id = venue_id) " +
+      "JOIN bands ON (band_id = bands.id) " +
+      "WHERE venues.id = :id";
+      List<Band> bands = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetch(Band.class);
+      return bands;
+    }
+  }
   //
   // public static void deleteAll() {
   //   String sqlJoin ="DELETE FROM recipes_tags";
